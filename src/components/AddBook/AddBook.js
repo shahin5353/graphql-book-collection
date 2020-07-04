@@ -39,14 +39,17 @@ const AddBook = (props) => {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label htmlFor="authorName">Author Name</Form.Label>
-                            <Form.Control id="authorName" as="select" onChange={(e)=>setBook({...book,authorId:e.target.value})} required>
+                            <Form.Control id="authorName" as="select" onChange={(e)=>setBook({...book,authorId:e.target.value})} required="true">
+                                <option value="">-- Select Author --</option>
                                 {
                                     data.loading ?
                                     <option disabled>Loading Authors...</option>
                                     :
                                     data.authors.map(author=>{
                                         return  (
+                                        <>
                                         <option key={author.id} value={author.id}>{author.name}</option>
+                                        </>
                                         )                                    
                                     })
                                 }
